@@ -14,14 +14,14 @@ class AppLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      final isSmall = constraints.maxWidth < _phoneWidth;
+      final _isSmall = constraints.maxWidth < _phoneWidth;
 
       return Scaffold(
         appBar: AppBar(
           title: Text('APP_NAME - $pageName'),
           centerTitle: false,
         ),
-        drawer: isSmall
+        drawer: _isSmall
             ? Drawer(
                 child: SidebarItems(),
               )
@@ -29,7 +29,7 @@ class AppLayout extends StatelessWidget {
         body: Container(
           child: Row(
             children: [
-              if (isSmall == false) Sidebar(),
+              if (_isSmall == false) Sidebar(),
               Expanded(
                 child: child,
               ),
